@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
             playerRB.AddForce(Vector2.up * 200f);
         }
 
-        //Attempting left movement 
+        //Left movement 
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        //Attempting right movement 
+        //Right movement 
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
