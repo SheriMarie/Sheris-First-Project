@@ -6,8 +6,9 @@ public class PlayerMovement : MonoBehaviour
 
 {
 
-    Rigidbody2D _rigidbody;
-    bool isJumpInput = false;
+    private Rigidbody2D _rigidbody;
+    private bool _isJumpInput = false;
+    private bool _isGrounded = false;
 
     private void Start()
     {
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isJumpInput = true;
+            _isJumpInput = true;
         }
     }
 
@@ -28,15 +29,11 @@ public class PlayerMovement : MonoBehaviour
     {
         // Jump movement 
 
-        
+        if (_isJumpInput && _isGrounded)
         {
-            if(isJumpInput)
-            {
-                _rigidbody.AddForce(Vector2.up * 200f);
-                isJumpInput = false;
-            }
-           
+                _rigidbody.AddForce(Vector2.up * 250f);
         }
+        _isJumpInput = false;
 
         //Right movement 
 
@@ -52,8 +49,16 @@ public class PlayerMovement : MonoBehaviour
             _rigidbody.AddForce(Vector2.left * 600f * Time.deltaTime);
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        _isGrounded = true;
+    }
 
-   
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        _isGrounded = false;  
+    }
+
 
 }
 

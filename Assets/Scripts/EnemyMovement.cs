@@ -7,13 +7,9 @@ public class EnemyMovement : MonoBehaviour
     public float speed;
     public bool isMovingRight = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    public float leftBountry;
+    public float rightBountry;
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
 
@@ -27,12 +23,12 @@ public class EnemyMovement : MonoBehaviour
             transform.position -= new Vector3(speed, 0, 0) * Time.deltaTime;
         }
 
-        if (transform.position.x >= 10)
+        if (transform.position.x >= rightBountry)
         {
             isMovingRight = false;
         }
 
-        if (transform.position.x <= -10)
+        if (transform.position.x <= -leftBountry)
         {
             isMovingRight = true;
         }
