@@ -23,12 +23,15 @@ public class EnemyMovement : MonoBehaviour
             transform.position -= new Vector3(speed, 0, 0) * Time.deltaTime;
         }
 
+        //if (transform.position.x >= player.transform.x + rightBoundry) - this would make enemy follow player
+
         if (transform.position.x >= rightBountry)
         {
             isMovingRight = false;
         }
 
-        if (transform.position.x <= -leftBountry)
+        //if (transform.position.x >= player.transform.x + rightBoundry) - this would make enemy follow player
+        if (transform.position.x <= leftBountry)
         {
             isMovingRight = true;
         }
